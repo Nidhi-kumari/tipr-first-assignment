@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{tikzsymbols}
+\usepackage{graphicx}
+\usepackage{subfig}
+\newcommand{\sectionbreak}{\clearpage}
+\usepackage[section]{placeins}
+%
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+%
+\title{Report :: TIPR Assignment - I}
+\author{NIDHI KUMARI (15127)}
+\date{11-02-2019}
+
+\begin{document}
+
+\maketitle
+\section{INDRODUCTION}
+In this assignment we have implemented Random projection,naive bayes, K nearest neighbor, Locality sensitive Hashing. For each of the following i have used 10 folds cross validations.
+Dataset to work upon are
+\begin{itemize}
+  \item Dolphins
+  \item Pubmed
+  \item Twitter
+\end{itemize}
+
+
+\section{Task1}
+we have to implement Random projection.
+Random projection is a method to reduce the dimensionality of the data. For implementation i have created a random matrix with zero mean and unit variance and multiply the random matrix with the original data matrix. The output matrix which we will get is the reduced dimension matrix
+
+\section{Task2}
+Here we have to implement K Nearest Neighbor and Naive bayes. I have implemented Gaussian naive bayes for dolphins and pubmed whereas multinomial naive bayes for twitter dataset.
+
+\section{Task3}
+plotting of accuracy and f1-score vs dimensions for various dataset using implemented methods.
+
+\begin{figure}
+
+\includegraphics[width=8cm, height=4cm]{dolphins/task_1KNN.png}
+\caption{KNN for dolphins}
+since dolphins dataset is small hence the accuracy fluctuates a lot. so we can't predict any relation between dimension and accuracy
+\end{figure}
+
+
+
+\begin{figure}%
+\centering
+    \subfloat[KNN]{{\includegraphics[width=5.5cm, height=3cm]{pubmed/task_1KNN.png} }}%
+    \qquad
+    \subfloat[Naive Bayes]{{\includegraphics[width=5.5cm, height=3cm]{pubmed/task_1NB.png}}}%
+    \caption{Pubmed dataset}%
+    \label{fig:example}%
+   
+for pubmed dataset KNN is performing good for lower dimension but not good for higher dimension. Whereas Naive bayes is performing good for higher dimension and overall Naive bayes is performing better than KNN hence for Naive Bayes i an on Amar side.
+\end{figure}
+
+
+
+\begin{figure}%
+\centering
+    \subfloat[KNN]{{\includegraphics[width=5.5cm, height=3cm]{twitter/task_1KNN.png} }}%
+    \qquad
+    \subfloat[Naive Bayes]{{\includegraphics[width=5.5cm, height=3cm]{twitter/task_1NB.png}}}%
+    \caption{Twitter dataset}%
+    \label{fig:example}%
+    
+    For Twitter dataset also Naive bayes is performing good as compared to KNN and KNN is performing good for low dimension and Naive bayes is performing good also on not so high dimension.
+    so Akbar side is safe for this case.
+\end{figure}
+
+\section{Task4}
+plotting of accuracy and f1-score vs dimensions for various dataset using library methods.
+\begin{figure}
+
+\includegraphics[width=8cm, height=4cm]{dolphins/task_2KNN.png}
+\caption{KNN (Library) for dolphins}
+inbuilt library KNN is performing good on high dimension.
+\end{figure}
+
+\begin{figure}[!htb]%
+\centering
+    \subfloat[KNN]{{\includegraphics[width=5.5cm,height=3cm]{pubmed/task_2KNN.png} }}%
+    \qquad
+    \subfloat[Naive Bayes]{{\includegraphics[width=5.5cm, height=3cm]{pubmed/task_2NB.png}}}%
+    \caption{Pubmed dataset}%
+    \label{fig:example}%
+   
+for pubmed dataset for KNN accuracy is first decreasing then it is increasing. Whereas in case of Naive bayes acuuracy keeps increasing with dimensions.
+\end{figure}
+
+
+\begin{figure}[!htb]%
+\centering
+    \subfloat[KNN]{{\includegraphics[width=5.5cm, height=3cm]{twitter/task_2KNN.png} }}%
+    \qquad
+    \subfloat[Naive Bayes]{{\includegraphics[width=5.5cm, height=3cm]{twitter/task_2NB.png}}}%
+    \caption{Twitter dataset}%
+    \label{fig:example}%
+    
+    For Twitter dataset also Naive bayes is performing good as compared to KNN. it is giving aprrox .50 accuracy on lower dimension
+    
+\end{figure}
+
+\section{Task5}
+In task 5 we have to compare our implemented method with the inbuilt library method
+
+\begin{figure}[!htb]
+
+\includegraphics[width=6cm, height=3cm]{dolphins/task_5KNN.png}
+\caption{KNN for dolphins}
+for dolphin data library method is performing a little bit bad as compared to implemented method.
+\end{figure}
+
+\begin{figure}[!htb]%
+\centering
+    \subfloat[KNN]{{\includegraphics[width=5.5cm,height=3cm]{pubmed/task_5KNN.png} }}%
+    \qquad
+    \subfloat[Naive Bayes]{{\includegraphics[width=5.5cm, height=3cm]{pubmed/task_5NB.png}}}%
+    \caption{Pubmed dataset}%
+    \label{fig:example}%
+   
+inbuilt library for Naive bayes is performing better which is not the case with KNN for pubmed.
+\end{figure}
+
+\begin{figure}[!htb]%
+\centering
+    \subfloat[KNN]{{\includegraphics[width=5.5cm, height=3cm]{twitter/task_5KNN.png} }}%
+    \qquad
+    \subfloat[Naive Bayes]{{\includegraphics[width=5.5cm, height=3cm]{twitter/task_5NB.png}}}%
+    \caption{Twitter dataset}%
+    \label{fig:example}%
+    
+    In both cases library is performing good for twitter
+    
+\end{figure}
+
+\section{Task6}
+I have used inbuilt Scikit library LSHForest to implement Locality sensitive Hasing.
+
+\section{Task7}
+here we have to compare LSH with PCA. for PCA i have used KNN as a classifier after reducing the dimensions.
+\begin{figure}[!htb]%
+\centering
+    \subfloat[LSH]{{\includegraphics[width=5.5cm,height=4cm]{dolphins/task_7LSH.png} }}%
+    \qquad
+    \subfloat[PCA]{{\includegraphics[width=5.5cm, height=4cm]{dolphins/task_7PCA.png}}}%
+    \caption{dolphins dataset}%
+    \label{fig:example}%
+   
+LSH accuracy is increasing as dimension is increasing but decreasing in case of PCA.
+\end{figure}
+
+\begin{figure}[!htb]%
+\centering
+    \subfloat[LSH]{{\includegraphics[width=5.5cm,height=4cm]{pubmed/task_7LSH.png} }}%
+    \qquad
+    \subfloat[PCA]{{\includegraphics[width=5.5cm, height=4cm]{pubmed/task_7PCA.png}}}%
+    \caption{Pubmed dataset}%
+    \label{fig:example}%
+   
+accuracy is increasing in both the cases.
+\end{figure}
+\begin{figure}[t!]%
+\centering
+    \subfloat[LSH]{{\includegraphics[width=5.5cm, height=4cm]{twitter/task_7LSH.png} }}%
+    \qquad
+    \subfloat[PCA]{{\includegraphics[width=5.5cm, height=4cm]{twitter/task_7PCA.png}}}%
+    \caption{Twitter dataset}%
+    \label{fig:example}%
+    
+    accuracy is increasing in the case of LSH whereas decreases in the case of PCA.
+    
+\end{figure}
+
+
+\end{document}
